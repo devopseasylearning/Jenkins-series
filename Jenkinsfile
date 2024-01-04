@@ -1,50 +1,53 @@
+
+
+
+
+
+
 pipeline {
     agent any
 
-    stages {
-        stage('Initialize') {
-            steps {
-                echo 'Starting the pipeline...'
-                // Initialization steps go here
-            }
-        }
+     stages {
 
         stage('Build') {
-            steps {
-                echo 'Building the application...'
-                // Build commands go here
-                // Example: sh 'make'
-            }
-        }
+           steps {
+             sh '''
+             here is a shell we can run all commands
+              '''
+             } 
 
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Test commands go here
-                // Example: sh './run-tests.sh'
-            }
-        }
 
-        stage('Deploy to Staging') {
-            steps {
-                echo 'Deploying to staging environment...'
-                // Deployment commands for staging go here
-                // Example: sh './deploy-staging.sh'
-            }
-        }
+          }
 
-        stage('Production Deployment') {
-            steps {
-                echo 'Deploying to production...'
-                // Deployment commands for production go here
-                // Example: sh './deploy-prod.sh'
-            }
-        }
+     }
+
+  post {
+   
+   success {
+      slackSend (channel: '#development-alerts', color: 'good', message: "SUCCESSFUL: Application S4-EKTSS  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
 
-    post {
-        always {
-            echo 'Pipeline execution is finished!'
-        }
+ 
+    unstable {
+      slackSend (channel: '#development-alerts', color: 'warning', message: "UNSTABLE: Application S4-EKTSS  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+
+    failure {
+      slackSend (channel: '#development-alerts', color: '#FF0000', message: "FAILURE: Application S4-EKTSS Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+   
+    cleanup {
+      deleteDir()
     }
 }
+
+
+
+}
+
+
+
+
+
+ 
+
