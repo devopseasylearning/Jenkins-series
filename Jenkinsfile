@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
            steps {
              sh '''
-             here is a shell we can run all commands
+             ls
               '''
              } 
 
