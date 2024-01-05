@@ -19,6 +19,41 @@ pipeline {
 
           }
 
+
+        stage('test') {
+           steps {
+             sh '''
+             sleep 10
+              '''
+             } 
+
+
+          }
+
+
+        stage('push to nexus') {
+           steps {
+             sh '''
+             sleep 10
+              '''
+             } 
+
+
+          }
+
+        stage('push to dockerhub') {
+           steps {
+             sh '''
+             sleep 10
+              '''
+             } 
+
+
+          }
+
+
+          
+
      }
 
     post {
@@ -41,4 +76,3 @@ pipeline {
 
 
  
-
