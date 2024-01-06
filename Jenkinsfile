@@ -23,7 +23,7 @@ pipeline {
         stage('build') {
             when {
                 expression {
-                env.APP != 'Canary'
+                env.APP == 'Canary' || env.APP == 'Ansible'
 
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
         stage('test') {
             when {
                 expression {
-                    env.REGISTRY != 'NEXUS'
+                    env.REGISTRY == 'NEXUS'
                 }
             }
             steps {
