@@ -13,7 +13,7 @@ pipeline{
    }
    
    stages {
-     stage('build') {
+     stage('build-test') {
        steps {
          sh '''
                uname -r
@@ -23,7 +23,7 @@ pipeline{
                echo $USER
              '''
        }
-     }
+   
    
      stage('build') {
        steps {
