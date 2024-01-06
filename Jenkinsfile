@@ -1,50 +1,31 @@
-pipeline {
+papipeline {
     agent any
 
     stages {
-        stage('Initialize') {
+
+        stage('build') {
             steps {
-                echo 'Starting the pipeline...'
-                // Initialization steps go here
+                echo 'Hello World'
             }
         }
 
-        stage('Build') {
+        stage('test') {
             steps {
-                sh '''
-                echo "abc"
-                '''
+                echo 'Hello World'
             }
         }
 
-        stage('Test') {
+        stage('verify') {
             steps {
-                echo 'Running tests...'
-                // Test commands go here
-                // Example: sh './run-tests.sh'
+                echo 'Hello World'
             }
         }
 
-        stage('Deploy to Staging') {
+        stage('deploy') {
             steps {
-                echo 'Deploying to staging environment...'
-                // Deployment commands for staging go here
-                // Example: sh './deploy-staging.sh'
+                echo 'Hello World'
             }
         }
 
-        stage('Production Deployment') {
-            steps {
-                echo 'Deploying to production...'
-                // Deployment commands for production go here
-                // Example: sh './deploy-prod.sh'
-            }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline execution is finished!'
-        }
     }
 }
