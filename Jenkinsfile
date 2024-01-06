@@ -28,7 +28,7 @@ pipeline {
 
         stage('test1') {
             when {
-                   branch 'develop'
+                   branch 'dev*'
                  }
 
             steps {
