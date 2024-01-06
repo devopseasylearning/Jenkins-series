@@ -23,7 +23,7 @@ pipeline {
         stage('build') {
             when {
                 expression {
-                env.APP == 'Odilia'
+                env.APP != 'Canary'
 
                 }
             }
