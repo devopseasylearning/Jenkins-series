@@ -28,7 +28,7 @@ pipeline {
 
         stage('test1') {
             when {
-                   branch 'test'
+                   branch 'develop'
                  }
 
             steps {
@@ -37,6 +37,18 @@ pipeline {
                '''
             }
         }
+
+
+        stage('test12') {
+
+            steps {
+               sh '''
+               echo "my name is $NAME I am from $COUNTRY"
+               '''
+            }
+        }
+
+
     }
 
 
