@@ -10,7 +10,7 @@ pipeline {
         stage('build') {
             steps {
                 sh '''
-                echo $NAME
+                echo $BRANCH_NAME
                 APP=Canary
                 echo $APP
                 '''
@@ -20,8 +20,7 @@ pipeline {
         stage('test') {
             steps {
                 sh '''
-                echo $NAME
-                echo $APP
+                echo $BRANCH_NAME
                 '''
             }
         }
@@ -29,7 +28,7 @@ pipeline {
         stage('verify') {
             steps {
                 sh '''
-                echo $NAME
+                echo $BRANCH_NAME
                 
                 '''
             }
@@ -38,7 +37,7 @@ pipeline {
         stage('deploy') {
             steps {
                 sh '''
-                echo $NAME
+                echo $BRANCH_NAME
                 
                 '''
             }
