@@ -13,10 +13,10 @@ pipeline{
    }
    
    stages {
-     stage('unit-test') {
+     stage('build') {
        steps {
          sh '''
-               abc uname -r
+               uname -r
                ls -l 
                java -version
                echo $APP
