@@ -11,9 +11,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building the application...'
-                // Build commands go here
-                // Example: sh 'make'
+                sh '''
+                echo $BRANCH_NAME
+                '''
             }
         }
 
