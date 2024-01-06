@@ -23,7 +23,7 @@ pipeline{
                echo $USER
              '''
        }
-   
+   }
    
      stage('build') {
        steps {
