@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh '''
                 echo $NAME
-                
+                echo $APP
                 '''
             }
         }
