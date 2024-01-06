@@ -9,6 +9,11 @@ pipeline {
       string defaultValue: 'canary', 
       name: 'APP',
       description: 'Enter the application name'
+      
+      choice choices: ['ECR', 'DOCKERHUB', 'NEXUS'], 
+      name: 'REGISTRY',
+      description: 'Select the registry where you want to push your image'
+      
        
     }
 
