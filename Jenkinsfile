@@ -1,78 +1,91 @@
-
-
-
-
-
-
-pipeline {
-    agent any
-
-     stages {
-
-        stage('Build') {
-           steps {
-             sh '''
-             sleep 10
-              '''
-             } 
-
-
-          }
-
-
-        stage('test') {
-           steps {
-             sh '''
-             sleep 10
-              '''
-             } 
-
-
-          }
-
-
-        stage('push to nexus') {
-           steps {
-             sh '''
-             sleep 10
-              '''
-             } 
-
-
-          }
-
-        stage('push to dockerhub') {
-           steps {
-             sh '''
-             sleep 10
-              '''
-             } 
-
-
-          }
-
-
-          
-
+pipeline{
+   agent any
+   options {
+     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')
+     disableConcurrentBuilds()
+     timestamps
+     timeout(time: 2, unit: 'HOURS')
+   }
+   
+   environment {
+     APP = "canary"
+     USER = "john"
+   }
+   
+   stages {
+     stage('unit-test') {
+       steps {
+         sh '''
+               uname -r
+               ls -l 
+               java -version
+               echo $APP
+               echo $USER
+             '''
+       }
      }
-
+   
+     stage('build') {
+       steps {
+         sh '''
+               uname -r
+               ls -l 
+               java -version
+               echo $APP
+               echo $USER
+             '''
+       }
+     }
+   
+     stage('push ') {
+       steps {
+         sh '''
+               uname -r
+               ls -l 
+               java -version
+               echo $APP
+               echo $USER
+             '''
+       }
+     }
+   
+     stage('deploy') {
+       steps {
+         sh '''
+               uname -r
+               ls -l 
+               java -version
+               echo $APP
+               echo $USER
+             '''
+       }
+     }
+   
     post {
-        success {
-            // Actions to perform on success
-            slackSend(channel: 'development-alerts', message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-        }
-        failure {
-            // Actions to perform on failure
-            slackSend(channel: 'development-alerts', message: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-        }
-        // Additional conditions (like 'always', 'unstable') if needed
+      success {
+        slackSend channel: 'development-alerts', message: 'the build was really a success'
+      }
+
+      failure {
+        slackSend channel: 'development-alerts', message: 'the build was NOT  a success'
+      }
+
+      unstable {
+        slackSend channel: 'development-alerts', message: 'the build was not stable'
+      }
     }
 
 
+   }
+   
+
+
+
+
+
+
+
+
+
+
 }
-
-
-
-
-
- 
