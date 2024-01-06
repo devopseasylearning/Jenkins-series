@@ -1,44 +1,50 @@
 pipeline {
-
     agent any
-    parameters {
-      choice choices: ['DEV', 'QA', 'SECURITY', 'DEVOPS', 'PRE-PROD', 'PROD'],
-       name: 'ENVIRONMENT',
-       description: 'Select an environment'
-        
-      string defaultValue: 'Canary', 
-      name: 'APP',
-      description: 'Enter the application name'
-      
-      choice choices: ['ECR', 'DOCKERHUB', 'NEXUS'], 
-      name: 'REGISTRY',
-      description: 'Select the registry where you want to push your image'
-      
-       
-    }
 
     stages {
+        stage('Initialize') {
+            steps {
+                echo 'Starting the pipeline...'
+                // Initialization steps go here
+            }
+        }
 
-        
-        stage('build') {
+        stage('Build') {
             steps {
                 sh '''
-               echo  $WORKSPACE
-               echo $NODE_LABELS
-               echo $BUILD_NUMBER
-               echo $JENKINS_URL
+                echo $BRANCH_NAME
                 '''
             }
         }
 
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Test commands go here
+                // Example: sh './run-tests.sh'
+            }
+        }
 
+        stage('Deploy to Staging') {
+            steps {
+                echo 'Deploying to staging environment...'
+                // Deployment commands for staging go here
+                // Example: sh './deploy-staging.sh'
+            }
+        }
 
-
-
+        stage('Production Deployment') {
+            steps {
+                echo 'Deploying to production...'
+                // Deployment commands for production go here
+                // Example: sh './deploy-prod.sh'
+            }
+        }
     }
 
-
-
-
-
+    post {
+        always {
+            echo 'Pipeline execution is finished!'
+        }
+    }
 }
