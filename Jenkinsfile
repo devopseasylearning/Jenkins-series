@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+      NAME = "user"
+      COUNTRY = "Mexico"
+    }
 
     stages {
 
