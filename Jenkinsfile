@@ -15,6 +15,10 @@ pipeline {
     stages {
 
         stage('test') {
+            when {
+                   environment name: 'NAME', value: 'kapson'
+                 }
+
             steps {
                sh '''
                echo "my name is $NAME I am from $COUNTRY"
@@ -22,7 +26,17 @@ pipeline {
             }
         }
 
+        stage('test1') {
+            when {
+                   branch 'test'
+                 }
 
+            steps {
+               sh '''
+               echo "my name is $NAME I am from $COUNTRY"
+               '''
+            }
+        }
     }
 
 
