@@ -11,7 +11,8 @@ pipeline {
             steps {
                 sh '''
                 echo $NAME
-                echo " I am from $COUNTRY"
+                APP=Canary
+                echo $APP
                 '''
             }
         }
@@ -20,7 +21,7 @@ pipeline {
             steps {
                 sh '''
                 echo $NAME
-                echo " I am from $COUNTRY"
+                
                 '''
             }
         }
@@ -29,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                 echo $NAME
-                echo " I am from $COUNTRY"
+                
                 '''
             }
         }
@@ -38,7 +39,7 @@ pipeline {
             steps {
                 sh '''
                 echo $NAME
-                echo " I am from $COUNTRY"
+                
                 '''
             }
         }
