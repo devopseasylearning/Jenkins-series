@@ -1,50 +1,47 @@
 pipeline {
     agent any
-
-    stages {
-        stage('Initialize') {
-            steps {
-                echo 'Starting the pipeline...'
-                // Initialization steps go here
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building the application...'
-                // Build commands go here
-                // Example: sh 'make'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Test commands go here
-                // Example: sh './run-tests.sh'
-            }
-        }
-
-        stage('Deploy to Staging') {
-            steps {
-                echo 'Deploying to staging environment...'
-                // Deployment commands for staging go here
-                // Example: sh './deploy-staging.sh'
-            }
-        }
-
-        stage('Production Deployment') {
-            steps {
-                echo 'Deploying to production...'
-                // Deployment commands for production go here
-                // Example: sh './deploy-prod.sh'
-            }
-        }
+    environment {
+      NAME = "user"
+      COUNTRY = "Mexico"
     }
 
-    post {
-        always {
-            echo 'Pipeline execution is finished!'
+    stages {
+
+        stage('build') {
+            steps {
+                sh '''
+                echo $BRANCH_NAME
+                APP=Canary
+                echo $APP
+                '''
+            }
         }
+
+        stage('test') {
+            steps {
+                sh '''
+                echo $BRANCH_NAME
+                '''
+            }
+        }
+
+        stage('verify') {
+            steps {
+                sh '''
+                echo $BRANCH_NAME
+                
+                '''
+            }
+        }
+
+        stage('deploy') {
+            steps {
+                sh '''
+                echo $BRANCH_NAME
+                
+                '''
+            }
+        }
+
     }
 }
