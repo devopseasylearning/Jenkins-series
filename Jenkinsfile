@@ -10,11 +10,12 @@ pipeline {
         stage('build') {
             steps {
                 sh '''
-               echo "NODE_NAME"
-               echo "NODE_LABELS"
-               echo "WORKSPACE"
-               echo "JENKINS_HOME"
-               echo "JENKINS_URL"
+               echo NODE_NAME
+               echo ${BUILD_NUMBER}
+               echo ${NODE_LABELS}
+               echo ${WORKSPACE}
+               echo ${JENKINS_HOME}
+               echo ${JENKINS_URL}
                 '''
             }
         }
@@ -22,7 +23,12 @@ pipeline {
         stage('test') {
             steps {
                 sh '''
-                echo $BUILD_NUMBER
+               echo NODE_NAME
+               echo ${BUILD_NUMBER}
+               echo ${NODE_LABELS}
+               echo ${WORKSPACE}
+               echo ${JENKINS_HOME}
+               echo ${JENKINS_URL}
                 '''
             }
         }
@@ -30,7 +36,12 @@ pipeline {
         stage('verify') {
             steps {
                 sh '''
-                echo $BUILD_NUMBER
+               echo NODE_NAME
+               echo ${BUILD_NUMBER}
+               echo ${NODE_LABELS}
+               echo ${WORKSPACE}
+               echo ${JENKINS_HOME}
+               echo ${JENKINS_URL}
                 
                 '''
             }
@@ -39,7 +50,12 @@ pipeline {
         stage('deploy') {
             steps {
                 sh '''
-                echo $BUILD_NUMBER
+               echo NODE_NAME
+               echo ${BUILD_NUMBER}
+               echo ${NODE_LABELS}
+               echo ${WORKSPACE}
+               echo ${JENKINS_HOME}
+               echo ${JENKINS_URL}
                 
                 '''
             }
