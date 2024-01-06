@@ -9,25 +9,33 @@ pipeline {
 
         stage('build') {
             steps {
-                echo 'Hello World'
+                sh '''
+                echo $NAME
+                '''
             }
         }
 
         stage('test') {
             steps {
-                echo 'Hello World'
+                sh '''
+                echo $NAME
+                '''
             }
         }
 
         stage('verify') {
             steps {
-                echo 'Hello World'
+                sh '''
+                echo $NAME
+                '''
             }
         }
 
         stage('deploy') {
             steps {
-                echo 'Hello World'
+                sh '''
+                echo $NAME
+                '''
             }
         }
 
