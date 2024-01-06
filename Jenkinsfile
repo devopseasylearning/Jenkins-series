@@ -61,19 +61,19 @@ pipeline{
        }
      }
    
-    post {
-      success {
-        slackSend channel: 'development-alerts', message: 'the build was really a success'
-      }
+    // post {
+    //   success {
+    //     slackSend channel: 'development-alerts', message: 'the build was really a success'
+    //   }
 
-      failure {
-        slackSend channel: 'development-alerts', message: 'the build was NOT  a success'
-      }
+    //   failure {
+    //     slackSend channel: 'development-alerts', message: 'the build was NOT  a success'
+    //   }
 
-      unstable {
-        slackSend channel: 'development-alerts', message: 'the build was not stable'
-      }
-    }
+    //   unstable {
+    //     slackSend channel: 'development-alerts', message: 'the build was not stable'
+    //   }
+    // }
 
 
    }
