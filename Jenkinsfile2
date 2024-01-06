@@ -60,29 +60,21 @@ pipeline{
              '''
        }
      }
-   
+     
+   }
+
+
     post {
       success {
         slackSend channel: 'development-alerts', color: 'good', message: 'the build was successful'
       }
-    }
+    
 
       failure {
         slackSend channel: 'development-alerts', color: 'danger', message: 'the build was NOT successful'
       }
-
     }
 
-   }
-   
-
-
-
-
-
-
-
-
-
+    
 
 }
