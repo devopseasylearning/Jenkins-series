@@ -1,18 +1,57 @@
 pipeline {
+
     agent any
+     parameters {
+       booleanParam description: 'verify if the config file exist', name: 'true'
+       choice choices: ['NIGERIA', 'CAMEROON', 'USA', 'GHANA', 'MEXICO'],
+        description: 'Select your country ',
+        name: 'COUNTRY'
+       string defaultValue: 'eric',
+        description: 'enter your name', 
+        name: 'NAME'
+       file description: 'upload the config file to here',
+        name: ''
+     }
     stages {
-        stage('Example Build') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-        stage('Example Deploy') {
+
+        stage('test') {
             when {
-                branch 'develop'
-            }
+                   environment name: 'NAME', value: 'kapson'
+                 }
+
             steps {
-                echo 'Deploying'
+               sh '''
+               echo "my name is $NAME I am from $COUNTRY"
+               '''
             }
         }
+
+        stage('test1') {
+            when {
+                    expression {
+                    env.COUNTRY == 'USA'
+                   }
+                 }
+
+            steps {
+               sh '''
+               echo "my name is $NAME I am from $COUNTRY"
+               '''
+            }
+        }
+
+
+        stage('test12') {
+
+            steps {
+               sh '''
+               echo "my name is $NAME I am from $COUNTRY"
+               '''
+            }
+        }
+
+
     }
+
+
 }
