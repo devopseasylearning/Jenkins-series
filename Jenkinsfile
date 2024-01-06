@@ -21,34 +21,18 @@ pipeline {
 
         
         stage('build') {
-            when {
-                expression {
-                env.APP == 'Canary' || env.APP == 'Ansible'
-
-                }
-            }
             steps {
-                echo 'Hello World'
+                sh '''
+               echo  $BRANCH_NAME
+               echo $CHANGE_AUTHOR
+               echo $BUILD_NUMBER
+                '''
             }
         }
 
 
-        stage('test') {
-            when {
-                expression {
-                    env.REGISTRY == 'ECR' && env.ENVIRONMENT == 'DEV'
-                }
-            }
-            steps {
-                echo 'Hello World'
-            }
-        }
 
-        stage('deploy') {
-            steps {
-                echo 'Hello World'
-            }
-        }
+
 
     }
 
