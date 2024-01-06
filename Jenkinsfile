@@ -36,7 +36,7 @@ pipeline {
         stage('test') {
             when {
                 expression {
-                    env.REGISTRY == 'ECR'
+                    env.REGISTRY == 'ECR' && env.ENVIRONMENT == 'DEV'
                 }
             }
             steps {
