@@ -23,9 +23,10 @@ pipeline {
         stage('build') {
             steps {
                 sh '''
-               echo  $BRANCH_NAME
-               echo $CHANGE_AUTHOR
+               echo  $WORKSPACE
+               echo $NODE_LABELS
                echo $BUILD_NUMBER
+               echo $JENKINS_URL
                 '''
             }
         }
