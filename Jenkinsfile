@@ -10,9 +10,11 @@ pipeline {
         stage('build') {
             steps {
                 sh '''
-                echo $BUILD_NUMBER
-                APP=Canary
-                echo $APP
+               echo "NODE_NAME"
+               echo "NODE_LABELS"
+               echo "WORKSPACE"
+               echo "JENKINS_HOME"
+               echo "JENKINS_URL"
                 '''
             }
         }
