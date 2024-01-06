@@ -6,7 +6,7 @@ pipeline {
        name: 'ENVIRONMENT',
        description: 'Select an environment'
         
-      string defaultValue: 'canary', 
+      string defaultValue: 'Canary', 
       name: 'APP',
       description: 'Enter the application name'
       
@@ -19,8 +19,14 @@ pipeline {
 
     stages {
 
-
+        
         stage('build') {
+            when {
+                expression {
+                env.APP == 'Odilia'
+
+                }
+            }
             steps {
                 echo 'Hello World'
             }
